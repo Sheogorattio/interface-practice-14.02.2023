@@ -1,4 +1,5 @@
 ﻿using Interface;
+using interface_practice;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ArrayClass
 {
-    public class MyArray : IOutput, IMath, ISort
+    public class MyArray : IOutput, IMath, ISort, ICalc, IOutput2, ICalc2
     {
        private int[] arr; 
         private int size;
@@ -162,6 +163,71 @@ namespace ArrayClass
                 SortAsc();
             }
             else SortDesc();
+        }
+
+        public int Less(int valueToCompare)
+        {
+            int counter = 0;
+            foreach(var i in arr)
+            {
+                if(i < valueToCompare) counter++;
+            }
+            return counter;
+        }
+
+        public int Greater(int valueToCompare)
+        {
+            int counter = 0;
+            foreach (var i in arr)
+            {
+                if (i > valueToCompare) counter++;
+            }
+            return counter;
+        }
+
+        public void ShowEven()
+        {
+            foreach(var i in arr)
+            {
+                if (i % 2 == 0) Console.WriteLine("{0} ", i);
+            }
+            Console.WriteLine();
+        }
+
+        public void ShowOdd()
+        {
+            foreach (var i in arr)
+            {
+                if (i % 2 == 0) Console.WriteLine("{0} ", i);
+            }
+            Console.WriteLine();
+        }
+
+        public int CountDistinct()
+        {
+           int count = arr.Length;
+            foreach(var i in arr)
+            {
+                foreach(int j in arr)
+                {
+                    if (i == j)
+                    {
+                        count--;
+                        break;
+                    }
+                }
+            }
+            return count;
+        }
+
+        public int EqualToValue(int valueToCompare)
+        {
+            int counter = 0;
+            foreach(var i in arr)
+            {
+                if (i == valueToCompare) counter++;
+            }
+            return counter;
         }
     }
 }
